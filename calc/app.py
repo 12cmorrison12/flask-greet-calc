@@ -34,3 +34,18 @@ def to_div():
     result = div(a,b)
 
     return str(result)
+
+operators = {
+    "add": add,
+    "sub": sub,
+    "mult": mult,
+    "div": div,
+    }
+
+@app.route('/math/<oper>')
+def do_math(oper):
+    a = int(request.args.get('a'))
+    b = int(request.args.get('b'))
+    result = operators[oper](a,b)
+
+    return str(result)
